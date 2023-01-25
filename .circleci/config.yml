@@ -40,7 +40,7 @@ jobs:
       - checkout
       - run:
           name: "print world"
-          command: "echo Worldddd!"        
+          command: "echo Worldddd!"
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -51,7 +51,6 @@ workflows:
   hello-world-workflow:
     jobs:
       - print-hello
-      - print-world
-        requires: [print-hello]
-
-# VS Code Extension Version: 1.5.1
+      - print-world:
+          requires:
+            - print-hello
