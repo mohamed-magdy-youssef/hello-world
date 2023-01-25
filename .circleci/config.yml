@@ -52,7 +52,6 @@ workflows:
     jobs:
       - print-hello
       - print-world
-        requires:
-          - print-hello
+        requires: [print-hello]
 
 # VS Code Extension Version: 1.5.1
