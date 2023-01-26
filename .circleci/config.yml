@@ -56,9 +56,11 @@ jobs:
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
       - checkout
+      - run: exit 1
       - run:
           name: "print my name"
           command: "echo $MY_NAME"
+          when: on_fail
 
   save_hello_world_output:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
@@ -106,13 +108,13 @@ workflows:
   # say-hello-workflow:
   #   jobs:
   #     - say-hello
-  # hello-world-workflow:
-  #   jobs:
-  #     - print-hello
-  #     - print-world:
-  #         requires:
-  #           - print-hello
-  #     - print-my-name
+  hello-world-workflow:
+    jobs:
+      #     - print-hello
+      #     - print-world:
+      #         requires:
+      #           - print-hello
+      - print-my-name
 
   # hello-world-workflow:
   #   jobs:
@@ -121,6 +123,6 @@ workflows:
   #         requires:
   #           - save_hello_world_output
 
-  work_flow_id_workflow:
-    jobs:
-      - work_flow_id
+  # work_flow_id_workflow:
+  #   jobs:
+  #     - work_flow_id
